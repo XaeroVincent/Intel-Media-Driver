@@ -1,6 +1,6 @@
-TIMESTAMP = 1756082482
-SHA256 (intel-media-driver-intel-media-25.2.6_GH0.tar.gz) = ba0f124c8e08e0675725f9631b7b1b1c371944b31b7a58a62d2c99338e7ce230
-SIZE (intel-media-driver-intel-media-25.2.6_GH0.tar.gz) = 28409738
+TIMESTAMP = 1759992037
+SHA256 (intel-media-driver-intel-media-25.3.4_GH0.tar.gz) = ef9a7a0881b250d23df7d4676341a3729b28887bcf404a74d48db5f44ffa0220
+SIZE (intel-media-driver-intel-media-25.3.4_GH0.tar.gz) = 28429128
 SHA256 (d54347296.patch) = 5ce2fbcc59b8739b578b1e290a43bd4d900c5e46fbb36d6be9e2d0a8883c6a8c
 SIZE (d54347296.patch) = 1243
 SHA256 (7e26e598e.patch) = 0c1f5b6d9ab6ad4ea89871e233e01dce1b52099e03b3615c72fc37f77d240d8b
