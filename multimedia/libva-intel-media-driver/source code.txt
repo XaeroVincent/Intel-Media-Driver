@@ -1,1 +1,1 @@
-https://github.com/intel/media-driver/tree/192fe0f5478bdfacfc8df6fa768e5ac699b73924
+https://github.com/intel/media-driver/tree/intel-media-26.1.5

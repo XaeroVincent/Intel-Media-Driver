@@ -1,0 +1,76 @@
+--- cmrtlib/linux/share/cm_def_os.h
++++ cmrtlib/linux/share/cm_def_os.h
+@@ -32,15 +32,15 @@
+ #define Display unsigned int
+ #endif
+ 
++#include <cstdlib>
+ #include <cstring>
+ #include "pthread.h"
+-#include <malloc.h>
+ 
+ 
+ ////////////////////////////////////////////////////////////////////////////////////
+ // MS-specific defines/typedefs, which are absent under Linux but still used
+ ////////////////////////////////////////////////////////////////////////////////////
+-#define _aligned_malloc(size, alignment) memalign(alignment, size)
++#define _aligned_malloc(size, alignment) aligned_alloc(alignment, size)
+ #define _aligned_free(ptr) free(ptr)
+ typedef uint8_t BOOLEAN, *PBOOLEAN;
+ ////////////////////////////////////////////////////////////////////////////////////
+@@ -101,7 +101,7 @@ typedef enum _VACMTEXTUREFILTERTYPE {
+ 
+ inline void * CM_ALIGNED_MALLOC(size_t size, size_t alignment)
+ {
+-  return memalign(alignment, size);
++  return aligned_alloc(alignment, size);
+ }
+ 
+ inline void CM_ALIGNED_FREE(void * memory)
+--- cmrtlib/linux/share/cm_rt_def_os.h
++++ cmrtlib/linux/share/cm_rt_def_os.h
+@@ -36,7 +36,6 @@
+ #include <stdlib.h>
+ #include <stdint.h>
+ #include <math.h>
+-#include <malloc.h>
+ #include <string.h>
+ #include <sys/time.h>
+ #include <pthread.h>
+@@ -175,7 +174,7 @@ template<> inline const char * CM_TYPE_NAME_UNMANGLED<double>() { return "double
+ 
+ inline void * CM_ALIGNED_MALLOC(size_t size, size_t alignment) 
+ {
+-  return memalign(alignment, size);
++  return aligned_alloc(alignment, size);
+ } 
+ 
+ inline void CM_ALIGNED_FREE(void * memory) 
+--- media_driver/agnostic/ult/cm/buffer_up_test.cpp
++++ media_driver/agnostic/ult/cm/buffer_up_test.cpp
+@@ -21,7 +21,6 @@
+ */
+ 
+ #include "cm_test.h"
+-#include <malloc.h>
+ 
+ class BufferUPTest: public CmTest
+ {
+--- media_driver/linux/ult/ult_app/cm/cm_test.h
++++ media_driver/linux/ult/ult_app/cm/cm_test.h
+@@ -23,7 +23,6 @@
+ #ifndef MEDIADRIVER_LINUX_CODECHAL_ULT_ULTAPP_CMTEST_H_
+ #define MEDIADRIVER_LINUX_CODECHAL_ULT_ULTAPP_CMTEST_H_
+ 
+-#include <malloc.h>
+ #include "gtest/gtest.h"
+ #include "mock_device.h"
+ #include "../memory_leak_detector.h"
+@@ -34,7 +33,7 @@ class CmTest: public testing::Test
+ {
+ public:
+     static void* AllocateAlignedMemory(size_t size, size_t alignment)
+-    { return memalign(alignment, size); }
++    { return aligned_alloc(alignment, size); }
+ 
+     static void FreeAlignedMemory(void *memory) { free(memory); }
